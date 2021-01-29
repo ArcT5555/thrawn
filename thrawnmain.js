@@ -16,7 +16,8 @@ client.on("message", (msg) => {
     }
 })
 client.on("message", (msg) => {
-    if (msg.content === "!identify yourself Thrawn") {
+    if (msg.content === "identify") {
         msg.reply("My name is Grand Admrial Thrawn... or atleast his intelligence. I am the culmination of his intelligence and machine learning. I was born to help the @41st Elite Corps. I provide tactical advice and a set of battle rules, plans and stategic suggestions. Good hunting")
     }
 })
+client.login(process.env.token);
