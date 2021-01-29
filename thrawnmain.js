@@ -1,15 +1,6 @@
-require("dotenv").config()
-const Discord = require("discord.js")
-const fs = require("fs")
-const client = new Discord.Client()
-fs.readdir("./events/", (err, files) => {
-    files.forEach((file) => {
-        const eventHandler = require(`./events/${file}`)
-        const eventName = file.split(".")[0]
-        client.on(eventName, (arg) => eventHandler(client, arg))
-    })
-})
-
+require("dotenv").config();
+const Discord = require("discord.js");
+const client = new Discord.Client;
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`)
 })
@@ -24,5 +15,8 @@ client.on("message", (msg) => {
         msg.reply("Yes Sir. I'll be awake all day, 24/7")
     }
 })
-
-client.login(process.env.token)
+client.on("message", (msg) => {
+    if (msg.content === "!identify yourself Thrawn") {
+        msg.reply("My name is Grand Admrial Thrawn... or atleast his intelligence. I am the culmination of his intelligence and machine learning. I was born to help the @41st Elite Corps. I provide tactical advice and a set of battle rules, plans and stategic suggestions. Good hunting")
+    }
+})
